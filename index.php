@@ -13,7 +13,7 @@ _require('./controller');
 //require Models
 _require('./models');
 
-$controller = ucfirst($_GET['controller'] ?? 'home') . 'Controller';
+$controller = ucfirst($_GET['controller'] ?? 'home') . 'Controller'; //ProductController
 $action     = strtolower($_GET['action'] ?? 'index');
 
 if(!class_exists($controller)){
