@@ -22,7 +22,7 @@ if(!class_exists($controller)){
 
 $controllerClass = new $controller();
 if(!method_exists($controller, $action)){
-    die('Method not found in server!');
+    die('Method not found in server! abc');
 }
 
 $controllerClass->{$action}();
