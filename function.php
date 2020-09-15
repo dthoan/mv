@@ -5,7 +5,7 @@ function config($nameConfig, $configGet = ''){
     if(!file_exists($path)){
         return [];
     }
-    $config = require_once($path);
+    $config = require($path);
     if($configGet != ''){
         return $config[$configGet] ?? null;
     }

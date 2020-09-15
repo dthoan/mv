@@ -34,10 +34,18 @@ class Models{
         $sql = 'SELECT * FROM ' . $this->table;
         return $this->_exec($sql);
     }
-
-    public function get($coditions){
+    //hàm get là để lấy toàn bộ data dựa theo codition
+    //giới hạn data dc chọn
+    public function get($coditions, $limit = 0){
         $sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->buildWhere($coditions);
+        if($limit != 0){
+            $sql .= ' limit ' . $limit;
+        }
         return $this->_exec($sql);
+    }
+    // chọn 1 dòng đầu tiên
+    public function one($coditions){
+        return $this->get($coditions, 1)[0] ?? [];
     }
 
     public function buildWhere($coditions){
@@ -97,14 +105,18 @@ class Models{
         }
     }
 
-    public function escapeSql($arrs){
+    public function escapeSql($arrs, $isSearchLike = false){
         $aryReplace = [
             '\\'    => '\\\\',
             '"'     => '\\"',
-            '_'     => '\_',
-            '%'     => '\%',
             '\''    => '\\\''
         ];
+        if($isSearchLike){
+            $aryReplace = array_merge($aryReplace, [
+                '_'     => '\_',
+                '%'     => '\%',
+            ]);
+        }
         return str_replace(array_keys($aryReplace), array_values($aryReplace), $arrs);
     }
 }

@@ -1,6 +1,6 @@
 <?php 
 
-define("BASE_URL", 'http://localhost:8180/mv/index.php');
+define("BASE_URL", 'http://localhost:8180/mv/');
 
 require_once './function.php';
 
