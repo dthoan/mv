@@ -6,7 +6,7 @@ class Controller {
     private $layout;
 
     public function __construct(){
-        $this->layout = 'layouts/layout1.php';
+        $this->layout = 'layouts/layout.php';
     }
 
     public function view($path, array $params = [], $returnHtml = false){
@@ -38,6 +38,7 @@ class Controller {
 
         if(!$returnHtml){
             echo $html;
+            return true;
         }else {
             return $html;
         }

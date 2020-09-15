@@ -21,7 +21,7 @@ class ProductController extends Controller{
         return $this->view('product/list.php', $params);
     }
 
-    public function add(){
+    public function add(){ //add screen
         $allCategory = $this->category->all();
         $params = [
             // cái này ở đâu ra v
