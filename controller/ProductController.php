@@ -33,6 +33,8 @@ class ProductController extends Controller{
     }
 
     public function addForm(){
+        $this->handlePostMethod();
+
         $params = $_POST;
 
         //sẽ kiểm tra giá trị đầu vào ở đây
@@ -71,11 +73,13 @@ class ProductController extends Controller{
     }
 
     public function editForm(){
+        $this->handlePostMethod();
+
         $params = $_POST;
 
         //kiểm tra xem images có dc update hay không
         $imagesPath = '';
-        if(isset($_FILES['images']) && !empty($_FILES['images'])){
+        if(isset($_FILES['images']) && !empty($_FILES['images']) && $_FILES['images']['error'] == '0'){
             $imagesPath = $this->saveFile($_FILES['images'] ?? []);
         }
 

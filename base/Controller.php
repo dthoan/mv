@@ -103,4 +103,14 @@ class Controller {
 
     }
 
+    public function isPostMethod(){
+        return $_SERVER['REQUEST_METHOD'] == 'POST';
+    }
+
+    public function handlePostMethod(){
+        if(!$this->isPostMethod()){
+            die("Not support method GET");
+        }
+    }
+
 }

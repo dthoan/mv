@@ -1,5 +1,16 @@
 <?php 
 
+//echo "<pre>";
+//print_r($_SERVER);
+//print_r($_POST);
+//die;
+
+//REQUEST_METHOD = GET
+//POST empty
+
+//REQUEST_METHOD = POST
+//Post not empry
+
 $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
 $baseUrl = rtrim($baseUrl, 'index.php');
 

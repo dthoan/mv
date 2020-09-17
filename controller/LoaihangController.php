@@ -21,6 +21,8 @@ class LoaihangController extends Controller{
     }
     // Thêm Loại hàng mới
     public function addForm(){
+        $this->handlePostMethod();
+
         $params = $_POST;
 
         //sẽ kiểm tra giá trị đầu vào ở đây
@@ -53,6 +55,8 @@ class LoaihangController extends Controller{
     }
 
     public function editForm(){
+        $this->handlePostMethod();
+
         $params = $_POST;
 
         //sẽ kiểm tra giá trị đầu vào ở đây
