@@ -1,6 +1,9 @@
 <?php 
 
-define("BASE_URL", 'http://localhost:8180/mv/');
+$baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
+$baseUrl = rtrim($baseUrl, 'index.php');
+
+define("BASE_URL", $baseUrl);
 
 require_once './function.php';
 
