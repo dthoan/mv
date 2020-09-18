@@ -8,13 +8,28 @@ class ProductModels extends Models{
         parent::__construct();
         $this->categoryTable = new LoaihangModels();
     }
-    // khóa ngoại??
-    public function productAll(){
-        $products = $this->all();
-        return array_map(function(&$product){
+
+    public function buildProduct($products = []){
+        if(empty($products)){
+            $products = $this->all();
+        }
+        $result = $products;
+        if(isset($products['datas'])){
+            $result = $products['datas'];
+        }
+        $products['datas'] = array_map(function(&$product){
             $categoryWithID = $this->categoryTable->one(['id' => $product['category_id']]);
             $product['category'] = $categoryWithID['category_name'] ?? '';
+
+            //calc discount
+            $discount = (int)$product['discount'];
+            $price = (int)$product['price'];
+            $priceDiscout = $price - ($price*$discount)/100;
+
+            $product['price_discount'] = $priceDiscout;
+
             return $product;
-        }, $products);
+        }, $result);
+        return $products;
     }
 }

@@ -1,7 +1,7 @@
 <?php 
 
 function config($nameConfig, $configGet = ''){
-    $path = './config/' . $nameConfig . '.php';
+    $path = __DIR__ . '/config/' . $nameConfig . '.php';
     if(!file_exists($path)){
         return [];
     }

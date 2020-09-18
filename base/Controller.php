@@ -46,7 +46,7 @@ class Controller {
 
     public function render($path, $params){
         extract($params);
-        $path = __DIR__ . '/../views/' . $path;
+        $path = BASE_PATH . '/views/' . $path;
         if(!file_exists($path)){
             return '';
         }
@@ -94,7 +94,7 @@ class Controller {
         
         //upload
         $pathFileSave = $pathUpload . $nameFileUpload;
-        $pathMoveFile = __DIR__ . '/../' . $pathFileSave;
+        $pathMoveFile = PATH_UPLOAD . '/' . $pathFileSave;
         if (move_uploaded_file($files["tmp_name"], $pathMoveFile)) {
             return $pathFileSave;
         } else {

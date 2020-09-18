@@ -1,20 +1,12 @@
-<?php 
-
-//echo "<pre>";
-//print_r($_SERVER);
-//print_r($_POST);
-//die;
-
-//REQUEST_METHOD = GET
-//POST empty
-
-//REQUEST_METHOD = POST
-//Post not empry
+<?php
 
 $baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
 $baseUrl = rtrim($baseUrl, 'index.php');
 
 define("BASE_URL", $baseUrl);
+define("BASE_PATH", __DIR__);
+define("PATH_UPLOAD", __DIR__);
+define("URL_UPLOAD", __DIR__);
 
 require_once './function.php';
 
