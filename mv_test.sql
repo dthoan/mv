@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 19, 2020 lúc 04:48 PM
+-- Thời gian đã tạo: Th9 19, 2020 lúc 08:13 PM
 -- Phiên bản máy phục vụ: 10.4.13-MariaDB
 -- Phiên bản PHP: 7.2.31
 
@@ -94,9 +94,22 @@ CREATE TABLE `permissions` (
 INSERT INTO `permissions` (`id`, `permision_code`, `permision_name`, `created_at`, `updated_at`, `permision_order`) VALUES
 (1, 'admin', 'Admin', '2020-09-19 08:11:34', '2020-09-19 08:30:09', 0),
 (2, 'view_product', 'View Product', '2020-09-19 08:12:10', '2020-09-19 08:29:15', 1),
-(3, 'view_user', 'View User', '2020-09-19 08:42:20', '2020-09-19 08:42:20', 0),
-(4, 'add_user', 'Add User', '2020-09-19 08:42:34', '2020-09-19 08:42:34', 0),
-(5, 'diactive_user', 'Diactive User', '2020-09-19 08:42:48', '2020-09-19 08:42:48', 0);
+(3, 'view_user', 'View User', '2020-09-19 08:42:20', '2020-09-19 17:59:49', 1),
+(4, 'add_user', 'Add User', '2020-09-19 08:42:34', '2020-09-19 17:59:53', 1),
+(5, 'diactive_user', 'Diactive User', '2020-09-19 08:42:48', '2020-09-19 17:59:58', 1),
+(6, 'add_permission', 'Add Permission', '2020-09-19 17:37:17', '2020-09-19 18:00:07', 9),
+(7, 'add_product', 'Add Product', '2020-09-19 17:47:08', '2020-09-19 17:58:58', 2),
+(8, 'edit_product', 'Edit Product', '2020-09-19 17:47:31', '2020-09-19 17:59:02', 3),
+(9, 'delete_product', 'Delete Product', '2020-09-19 17:47:46', '2020-09-19 17:59:05', 4),
+(10, 'view_category', 'View Category', '2020-09-19 17:48:52', '2020-09-19 17:59:18', 5),
+(11, 'add_category', 'Add Category', '2020-09-19 17:49:29', '2020-09-19 17:59:20', 6),
+(12, 'edit_category', 'Edit Category', '2020-09-19 17:49:42', '2020-09-19 17:59:25', 7),
+(13, 'delete_category', 'Delete Category', '2020-09-19 17:49:58', '2020-09-19 17:59:27', 8),
+(14, 'view_permission', 'View Permission', '2020-09-19 17:50:28', '2020-09-19 18:00:14', 9),
+(15, 'edit_permission', 'Edit Permission', '2020-09-19 17:50:42', '2020-09-19 18:00:11', 9),
+(16, 'delete_permission', 'Delete Permission', '2020-09-19 17:51:02', '2020-09-19 18:00:16', 9),
+(17, 'edit_permission_user', 'Edit Permission User', '2020-09-19 18:05:52', '2020-09-19 18:05:52', 10),
+(18, 'edit_user', 'Edit User', '2020-09-19 18:09:09', '2020-09-19 18:09:09', 1);
 
 -- --------------------------------------------------------
 
@@ -169,7 +182,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `fullname`, `phone`, `remember_code`, `token_code`, `permisions`, `birthday`, `created_at`, `updated_at`, `flag_deactive`) VALUES
 (1, 'saoxa37', 'e147605d9bac7e35a1239f244ad98467fff1c845', 'saoxa37@gmail.com', 'Đậu Minh Việt', '0329012526', '', '', '', '05/07/1998', '2020-09-18 16:00:13', '2020-09-19 08:43:03', 0),
-(2, 'admin', 'a6bb5f6eaed2bcb24c8cd64c76bde9918cca60c9', 'doanthihoan0961556327@gmail.com', 'Đoàn Thị Hoàn', '0329012526', '', '', '1|2|3|4|5', '10/02/1999', '2020-09-19 05:39:12', '2020-09-19 08:43:08', 0),
+(2, 'admin', 'a6bb5f6eaed2bcb24c8cd64c76bde9918cca60c9', 'doanthihoan0961556327@gmail.com', 'Đoàn Thị Hoàn', '0329012526', '', '', '1|2|3|10|14|17', '10/02/1999', '2020-09-19 05:39:12', '2020-09-19 18:10:54', 0),
 (3, 'user1', 'ce81085865cfea69c6ebd9d0fe69ab03f7eff010', 'user@demo.local', 'Demo User', '0879848104', '', '', '', '14/01/1998', '2020-09-19 08:59:39', '2020-09-19 09:03:50', 1);
 
 --
@@ -236,7 +249,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT cho bảng `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `product`
