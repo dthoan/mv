@@ -61,8 +61,7 @@ class Controller {
 
     public function redirect($url){
         header("Location: " . $url);
-        //header("Location: https://google.com");
-        return true;
+        die();
     }
 
     public function saveFile($files){

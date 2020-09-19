@@ -277,9 +277,21 @@
                     <div class="col-lg-4">
                         <div class="main-navigation flex-lg-right">
                             <div class="cart-widget">
-                                <div class="login-block">
-                                    <a href="login-register.html" class="font-weight-bold">Login</a> <br>
-                                    <span>or</span><a href="login-register.html">Register</a>
+                                <div class="login-block overflow-hidden">
+                                    <?php if(Users::get()->logined) : ?>
+                                        <div class="row p-0 m-0">
+                                            <div class="col-3 p-0 d-flex justify-content-center align-items-center">
+                                                <img src="public/image/user_icon.png" alt="" style="width: 24px; height: 24px;">
+                                            </div>
+                                            <div class="col-9 pr-0 text-center">
+                                                <span class="text-uppercase d-block"><?=Users::get()->username?></span>
+                                                <a href="<?=BASE_URL?>?controller=user&action=logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    <?php else : ?>
+                                        <a href="<?=BASE_URL?>?controller=user&action=login" class="font-weight-bold">Login</a> <br>
+                                        <span>or</span><a href="<?=BASE_URL?>?controller=user&action=register">Register</a>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="cart-block">
                                     <div class="cart-total">

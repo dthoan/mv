@@ -13,10 +13,17 @@ class UserController extends Controller{
         $this->usersModel = new UsersModels();
     }
 
+    public function isLogin(){
+        if(Users::get()->logined){
+            $this->redirect(BASE_URL . '?controller=home');
+        }
+    }
+
     public function index(){
     }
 
     public function register($params = []){
+        $this->isLogin();
         return $this->view('users/register.php', $params);
     }
 
@@ -38,6 +45,7 @@ class UserController extends Controller{
     }
 
     public function login($params = []){
+        $this->isLogin();
         return $this->view('users/login.php', $params);
     }
 
@@ -62,7 +70,12 @@ class UserController extends Controller{
         $userData = $this->usersModel->where($codition)->one();
         $userData = new Users($userData);
         Session::set('user_data', $userData);
-        return $this->redirect(BASE_URL . '?controller=user');
+        return $this->redirect(BASE_URL . '?controller=home');
+    }
+
+    public function logout(){
+        Users::logout();
+        return $this->redirect(BASE_URL . '?controller=user&action=login');
     }
 
 }

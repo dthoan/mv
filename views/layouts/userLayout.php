@@ -26,7 +26,9 @@
     <script>
         $(document).ready(function(){
             $(".datetime-picker").datepicker({
-                dateFormat : 'dd/mm/yy'
+                dateFormat : 'dd/mm/yy',
+                changeYear: true,
+                defaultDate : '01/01/1998'
             });
         })
     </script>
