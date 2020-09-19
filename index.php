@@ -9,6 +9,9 @@ define("URL_UPLOAD", __DIR__);
 
 require_once './function.php';
 
+//require autoload
+require './vendor/autoload.php';
+
 //require Base
 _require('./base');
 

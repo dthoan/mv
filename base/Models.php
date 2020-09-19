@@ -34,7 +34,7 @@ class Models{
     }
 
     public function where($codition){
-        array_merge($this->coditions, $codition);
+        $this->coditions = array_merge($this->coditions, $codition);
         return $this;
     }
     public function order($orderBy, $orderValue = 'ASC'){
@@ -77,12 +77,16 @@ class Models{
         return $this->_exec($sql);
     }
     // chọn 1 dòng đầu tiên
-    public function one($coditions){
+    public function one($coditions = []){
         return $this->get($coditions, 1)[0] ?? [];
     }
 
     public function count(){
         $sql = 'SELECT COUNT(*) as count FROM ' . $this->table;
+        if(!empty($this->coditions)){
+            $sql .= ' WHERE ' . $this->buildWhere($this->coditions);
+            $this->coditions = [];
+        }
         return (int)($this->_exec($sql)[0]['count'] ?? '0');
     }
 

@@ -16,6 +16,9 @@ define("URL_UPLOAD", $hostUrl . '/' . $scriptName);
 
 require_once '../function.php';
 
+//require autoload
+require '../vendor/autoload.php';
+
 //require Base
 _require('../base');
 

@@ -3,10 +3,9 @@
 
 class Controller {
 
-    private $layout;
+    protected $layout = 'layouts/layout.php';
 
     public function __construct(){
-        $this->layout = 'layouts/layout.php';
     }
 
     public function view($path, array $params = [], $returnHtml = false){
@@ -47,7 +46,7 @@ class Controller {
     public function render($path, $params){
         extract($params);
         $path = BASE_PATH . '/views/' . $path;
-        if(!file_exists($path)){
+        if(!file_exists($path) || is_dir($path)){
             return '';
         }
 
@@ -111,6 +110,10 @@ class Controller {
         if(!$this->isPostMethod()){
             die("Not support method GET");
         }
+    }
+
+    public static function hash($str){
+        return sha1(md5(sha1($str)));
     }
 
 }
