@@ -23,7 +23,7 @@ class Models{
         $this->database = $configDb['database'];
 
         try {
-            $this->connect = new PDO("mysql:host=$this->host;dbname=$this->database", $this->username, $this->password);
+            $this->connect = new PDO("mysql:host=$this->host;dbname=$this->database;charset=utf8", $this->username, $this->password);
             $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $e) {
             die("Connection failed: " . $e->getMessage());
