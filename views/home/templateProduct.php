@@ -1,15 +1,17 @@
-<div class="col-lg-4 col-sm-6">
+<?php $isDetail = $isDetail ?? false ?>
+<div class="<?= !!$isDetail ? '' : 'col-lg-4 col-sm-6' ?>">
     <div class="product-card">
+        <?php if(!$isDetail) : ?>
         <div class="product-grid-content">
             <div class="product-header">
                 <a href="" class="author"><?=$product['category']?></a>
-                <h3><a href="product-details.html"><?=$product['name']?></a></h3>
+                <h3><a href="<?=BASE_URL?>?controller=home&action=detail&id=<?=$product['id'] ?? ''?>"><?=$product['name']?></a></h3>
             </div>
             <div class="product-card--body">
                 <div class="card-image">
                     <img src="<?=$product['images']?>" alt="">
                     <div class="hover-contents">
-                        <a href="product-details.html" class="hover-image">
+                        <a href="<?=BASE_URL?>?controller=home&action=detail&id=<?=$product['id'] ?? ''?>" class="hover-image">
                             <img src="<?=$product['images']?>" alt="">
                         </a>
                         <div class="hover-btns">
@@ -36,6 +38,7 @@
                 </div>
             </div>
         </div>
+        <?php endif; ?>
         <div class="product-list-content">
             <div class="card-image">
                 <img src="<?=$product['images']?>" alt="">
@@ -43,7 +46,7 @@
             <div class="product-card--body">
                 <div class="product-header">
                     <a href="" class="author"><?=$product['category']?></a>
-                    <h3><a href="product-details.html" tabindex="0"><?=$product['name']?></a></h3>
+                    <h3><a href="<?=BASE_URL?>?controller=home&action=detail&id=<?=$product['id'] ?? ''?>" tabindex="0"><?=$product['name']?></a></h3>
                 </div>
                 <article>
                     <h2 class="sr-only">Card List Article</h2>

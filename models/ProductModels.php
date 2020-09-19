@@ -9,7 +9,10 @@ class ProductModels extends Models{
         $this->categoryTable = new LoaihangModels();
     }
 
-    public function buildProduct($products = []){
+    public function buildProduct($products = [], $isSingleData = false){
+        if($isSingleData){
+            return $this->_buildProduct($products);
+        }
         if(empty($products)){
             $products = $this->all();
         }
@@ -17,19 +20,29 @@ class ProductModels extends Models{
         if(isset($products['datas'])){
             $result = $products['datas'];
         }
-        $products['datas'] = array_map(function(&$product){
-            $categoryWithID = $this->categoryTable->one(['id' => $product['category_id']]);
-            $product['category'] = $categoryWithID['category_name'] ?? '';
-
-            //calc discount
-            $discount = (int)$product['discount'];
-            $price = (int)$product['price'];
-            $priceDiscout = $price - ($price*$discount)/100;
-
-            $product['price_discount'] = $priceDiscout;
-
+        $result = array_map(function(&$product){
+            $product = $this->_buildProduct($product);
             return $product;
         }, $result);
+        if(isset($products['datas'])){
+            $products['datas'] = $result;
+        }else{
+            $products = $result;
+        }
         return $products;
+    }
+
+    private function _buildProduct($product){
+        $categoryWithID = $this->categoryTable->one(['id' => $product['category_id']]);
+        $product['category'] = $categoryWithID['category_name'] ?? '';
+
+        //calc discount
+        $discount = (int)$product['discount'];
+        $price = (int)$product['price'];
+        $priceDiscout = $price - ($price*$discount)/100;
+
+        $product['price_discount'] = $priceDiscout;
+
+        return $product;
     }
 }

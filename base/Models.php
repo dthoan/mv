@@ -85,7 +85,6 @@ class Models{
         $sql = 'SELECT COUNT(*) as count FROM ' . $this->table;
         if(!empty($this->coditions)){
             $sql .= ' WHERE ' . $this->buildWhere($this->coditions);
-            $this->coditions = [];
         }
         return (int)($this->_exec($sql)[0]['count'] ?? '0');
     }
