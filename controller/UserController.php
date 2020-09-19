@@ -13,7 +13,7 @@ class UserController extends Controller{
         $this->usersModel = new UsersModels();
     }
 
-    public function isLogin(){
+    public function notLogin(){
         if(Users::get()->logined){
             $this->redirect(BASE_URL . '?controller=home');
         }
@@ -23,7 +23,7 @@ class UserController extends Controller{
     }
 
     public function register($params = []){
-        $this->isLogin();
+        $this->notLogin();
         return $this->view('users/register.php', $params);
     }
 
@@ -45,7 +45,7 @@ class UserController extends Controller{
     }
 
     public function login($params = []){
-        $this->isLogin();
+        $this->notLogin();
         return $this->view('users/login.php', $params);
     }
 
@@ -68,9 +68,18 @@ class UserController extends Controller{
         ];
 
         $userData = $this->usersModel->where($codition)->one();
+        if($userData['flag_deactive']){
+            $params = [
+                'errors' => ['User "' . $params['username'] . '" has diactived!'],
+            ];
+            return $this->login($params);
+        }
         $userData = new Users($userData);
         Session::set('user_data', $userData);
-        return $this->redirect(BASE_URL . '?controller=home');
+        if(Users::can('admin')){
+            $this->redirect(BASE_URL . 'admin/?controller=home');
+        }
+        $this->redirect(BASE_URL . '?controller=home');
     }
 
     public function logout(){

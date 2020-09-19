@@ -14613,3 +14613,9 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.disable_a_disabled .disabled{
+    pointer-events: none;
+    background: #aaa;
+    border-color: #aaa;
+}

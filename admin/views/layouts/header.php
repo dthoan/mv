@@ -137,6 +137,18 @@
                         <span>Category</span>
                     </a>
                 </li>
+                <li data-active="permissions">
+                    <a href="<?=BASE_URL?>?controller=permissions">
+                        <i class="fas fa-lock"></i>
+                        <span>Permissions</span>
+                    </a>
+                </li>
+                <li data-active="users">
+                    <a href="<?=BASE_URL?>?controller=users">
+                        <i class="fas fa-users"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

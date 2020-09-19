@@ -1,4 +1,4 @@
-<div class="container >
+<div class="container">
     <div class="row">
         <div>
         <form action="<?=BASE_URL?>?controller=loaihang&action=<?=$typePage?>Form" method="POST">

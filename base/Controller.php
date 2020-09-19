@@ -115,4 +115,16 @@ class Controller {
         return sha1(md5(sha1($str)));
     }
 
+    public function isAccessAdmin(){
+        if(!Users::isLogin() || !Users::can('admin')){
+            $this->redirect(rtrim(BASE_URL, 'admin/') . "?controller=home");
+        }
+    }
+
+    public function checkPermision($permision){
+        if(!Users::can($permision)){
+            $this->redirect(BASE_URL . '?controller=home');
+        }
+    }
+
 }

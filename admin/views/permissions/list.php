@@ -2,8 +2,8 @@
     <div class="row disable_a_disabled">
         <div class="col-12">
             <?php
-                $disableAdd = !Users::can('add_category') ? 'disabled' : '';
-                $urlAdd = BASE_URL . '?controller=Loaihang&action=add';
+                $disableAdd = !Users::can('add_permission') ? 'disabled' : '';
+                $urlAdd = BASE_URL . '?controller=permissions&action=add';
             ?>
             <a
                 href="<?= Users::can('add_category') ? $urlAdd : '' ?>"
@@ -18,25 +18,25 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Category code</th>
-                        <th scope="col">Category name</th>
+                        <th scope="col">Permission Code</th>
+                        <th scope="col">Permission Name</th>
                         <th scope="col">Time Create</th> 
                         <th scope="col" class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach(($categories ?? []) as $category) : ?>
+                    <?php $count = 1; foreach(($permissions ?? []) as $permission) : ?>
                         <tr>
-                            <th scope="row"><?=$category['id']?></th>
-                            <td><?=$category['category_code']?></td>
-                            <td><?=$category['category_name']?></td>
-                            <td><?=date('H:i d-m-Y', strtotime($category['created_at']))?></td>
+                            <th scope="row"><?=$count++?></th>
+                            <td><?=$permission['permision_code']?></td>
+                            <td><?=$permission['permision_name']?></td>
+                            <td><?=date('H:i d-m-Y', strtotime($permission['created_at']))?></td>
                             <td class="text-center">
                                 <?php
-                                    $urlEdit = BASE_URL . "?controller=Loaihang&action=edit&id=" . $category['id'];
-                                    $urlDelete = BASE_URL . "?controller=Loaihang&action=delete&id=" . $category['id'];
-                                    $disableEdit = !Users::can('edit_category') ? 'disabled' : '';
-                                    $disableDelete = !Users::can('delete_category') ? 'disabled' : '';
+                                    $urlEdit = BASE_URL . "?controller=permissions&action=edit&id=" . $permission['id'];
+                                    $urlDelete = BASE_URL . "?controller=permissions&action=delete&id=" . $permission['id'];
+                                    $disableEdit = !Users::can('edit_permission') ? 'disabled' : '';
+                                    $disableDelete = !Users::can('delete_permission') ? 'disabled' : '';
                                 ?>
                                 <a
                                     class="btn btn-success <?=$disableEdit?>"
@@ -47,7 +47,7 @@
                                     class="btn btn-danger <?=$disableDelete?>"
                                     <?=$disableDelete?>
                                     href="<?=$urlDelete?>"
-                                    onclick="return confirm('Are you sure delete this category?????')"
+                                    onclick="return confirm('Are you sure delete this permission?????')"
                                 >Delete</a>
                             </td>
                         </tr>

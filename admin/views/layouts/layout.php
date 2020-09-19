@@ -25,6 +25,7 @@
     <link href="public/vendor/slick/slick.css" rel="stylesheet" media="all">
     <link href="public/vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="public/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="public/userAsset/css/jquery-ui.min.css">
     <!-- Main CSS-->
     <link href="public/css/theme.css" rel="stylesheet" media="all">
 </head>
@@ -245,6 +246,7 @@
     <script src="public/vendor/circle-progress/circle-progress.min.js"></script>
     <script src="public/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="public/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="public/userAsset/js/jquery-ui.min.js"></script>
     <script src="public/vendor/select2/select2.min.js">
     </script>
     <!-- Main JS-->
@@ -257,7 +259,14 @@
                 if($(this).attr('data-active').toLowerCase() == controller.toLowerCase()){
                     $(this).addClass('active');
                 }
-            })
+            });
+
+            //set datepicker
+            $(".datetime-picker").datepicker({
+                dateFormat : 'dd/mm/yy',
+                changeYear: true,
+                defaultDate : '01/01/1998'
+            });
         })
     </script>
 </body>

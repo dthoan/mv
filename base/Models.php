@@ -114,7 +114,11 @@ class Models{
     public function buildWhere($coditions){
         $where = [];
         foreach($coditions as $key => $codition){
-            $where[] = $key . ' = "' . $this->escapeSql($codition) . '"';
+            if(isset($codition['typeWhere'])){
+                $where[] = $key . ' ' . $codition['typeWhere'] . ' ' . $codition['value'];
+            }else{
+                $where[] = $key . ' = "' . $this->escapeSql($codition) . '"';
+            }
         }
         return implode(' AND ', $where);
     }
@@ -122,7 +126,7 @@ class Models{
     public function buildOrder($orders){
         $orderData = [];
         foreach($orders as $key => $order){
-            $orderData[] = $key . ' "' . $order . '"';
+            $orderData[] = $key . ' ' . $order . '';
         }
         return implode(', ', $orderData);
     }

@@ -5,10 +5,13 @@ class LoaihangController extends Controller{
 
     public function __construct(){
         parent::__construct();
+        $this->isAccessAdmin();
         $this->loaihang = new LoaihangModels();
     }
     // hiện thị danh sách loại hàng
     public function index(){
+        $this->checkPermision('view_category');
+
         $allcategories = $this->loaihang->all();
         $params = [
             'categories' => $allcategories
@@ -17,11 +20,14 @@ class LoaihangController extends Controller{
     }
     // hiện thị form add_update loại hàng
     public function add(){
+        $this->checkPermision('add_category');
+
         return $this->view('LoaiHang/add_updateLoaiHang.php');
     }
     // Thêm Loại hàng mới
     public function addForm(){
         $this->handlePostMethod();
+        $this->checkPermision('add_category');
 
         $params = $_POST;
 
@@ -39,6 +45,8 @@ class LoaihangController extends Controller{
     }
     // chỉnh sửa
     public function edit(){
+        $this->checkPermision('edit_category');
+
         $id = $_GET['id'] ?? '';
         if($id == ''){
             die('Không tìm thấy loại hàng');
@@ -56,6 +64,7 @@ class LoaihangController extends Controller{
 
     public function editForm(){
         $this->handlePostMethod();
+        $this->checkPermision('edit_category');
 
         $params = $_POST;
 
@@ -78,6 +87,8 @@ class LoaihangController extends Controller{
     }
 
     public function delete(){
+        $this->checkPermision('delete_category');
+
         $id = $_GET['id'] ?? '';
         if($id == ''){
             die('Product not found');
@@ -88,8 +99,6 @@ class LoaihangController extends Controller{
         }
         return $this->redirect(BASE_URL . '?controller=Loaihang');
     }
-    
-
 }
 
 

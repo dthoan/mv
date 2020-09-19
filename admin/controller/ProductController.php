@@ -7,14 +7,15 @@ class ProductController extends Controller{
 
     public function __construct(){
         parent::__construct();
+        $this->isAccessAdmin();
         $this->product = new ProductModels();
         $this->category = new LoaihangModels();
     }
 
     public function index(){
+        $this->checkPermision('view_product');
+
         $allProduct = $this->product->productAll();
-        //query name Category
-        //từ category_id ta sẽ join sang bảng category để lấy Name
         $params = [
             'products' => $allProduct
         ];
@@ -22,6 +23,8 @@ class ProductController extends Controller{
     }
 
     public function add(){ //add screen
+        $this->checkPermision('add_product');
+
         $allCategory = $this->category->all();
         $params = [
             // cái này ở đâu ra v
@@ -34,6 +37,7 @@ class ProductController extends Controller{
 
     public function addForm(){
         $this->handlePostMethod();
+        $this->checkPermision('add_product');
 
         $params = $_POST;
 
@@ -56,6 +60,8 @@ class ProductController extends Controller{
     }
 
     public function edit(){
+        $this->checkPermision('edit_product');
+
         $id = $_GET['id'] ?? '';
         if($id == ''){
             die('Product not found');
@@ -75,6 +81,7 @@ class ProductController extends Controller{
 
     public function editForm(){
         $this->handlePostMethod();
+        $this->checkPermision('edit_product');
 
         $params = $_POST;
 
@@ -107,6 +114,8 @@ class ProductController extends Controller{
     }
 
     public function delete(){
+        $this->checkPermision('delete_product');
+
         $id = $_GET['id'] ?? '';
         if($id == ''){
             die('Product not found');

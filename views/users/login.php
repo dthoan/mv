@@ -11,7 +11,7 @@
             <form action="<?=BASE_URL?>?controller=user&action=loginForm" method="POST">
                 <div class="row">
                     <!-- Show error -->
-                    <?php if(isset($errors)) : ?>
+                    <?php if(isset($errors) && !empty($errors)) : ?>
                         <div class="input-group col-lg-12 mb-4">
                             <div class="alert alert-warning w-100">
                                 <ol class="mb-0">

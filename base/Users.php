@@ -15,9 +15,11 @@ class Users{
         return call_user_func_array($this->{$closure}, $args);
     }
 
-    public function can($action){
-        $permision = $this->user->permisions;
-        $permision = explode('|', $permision);
+    public static function can($action){
+        $usersModels = new UsersModels();
+        $permisionModels = new PermissionModels();
+        $permision = $usersModels->one(['id' => static::get()->id])['permisions'] ?? '';
+        $permision = $permisionModels->buildPermission($permision);
         return in_array(strtolower($action), $permision);
     }
 
@@ -26,6 +28,10 @@ class Users{
         $userData = Session::get('user_data')->user ?? new stdClass();
         $userData->logined = count((array)$userData) > 0;
         return $userData;
+    }
+
+    public static function isLogin(){
+        return !!static::get()->logined;
     }
 
     public static function logout(){
