@@ -6,7 +6,7 @@
                 $urlAdd = BASE_URL . '?controller=permissions&action=add';
             ?>
             <a
-                href="<?= Users::can('add_category') ? $urlAdd : '' ?>"
+                href="<?= Users::can('add_permission') ? $urlAdd : '' ?>"
                 class="btn btn-primary float-right mb-3 <?=$disableAdd?>"
                 <?=$disableAdd?>
             >Add</a>

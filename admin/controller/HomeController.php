@@ -3,9 +3,6 @@
 class HomeController extends Controller{
 
     public function index(){
-        echo "Home + index";
-    }
-    public function add(){
-        echo "add";
+        $this->redirect(BASE_URL . '?controller=Loaihang');
     }
 }

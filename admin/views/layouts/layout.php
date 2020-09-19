@@ -174,23 +174,23 @@
                                                 <div class="account-wrap">
                                                     <div class="account-item clearfix js-item-menu">
                                                         <div class="image">
-                                                            <img src="public/images/icon/avatar-01.jpg" alt="John Doe" />
+                                                            <img src="public/images/user_icon.png" alt="<?=Users::get()->username ?? ''?>" />
                                                         </div>
                                                         <div class="content">
-                                                            <a class="js-acc-btn" href="#">john doe</a>
+                                                            <a class="js-acc-btn text-uppercase" href="#"><?=Users::get()->username ?? ''?></a>
                                                         </div>
                                                         <div class="account-dropdown js-dropdown">
                                                             <div class="info clearfix">
                                                                 <div class="image">
                                                                     <a href="#">
-                                                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                                                        <img src="public/images/user_icon.png" alt="<?=Users::get()->username ?? ''?>" />
                                                                     </a>
                                                                 </div>
                                                                 <div class="content">
                                                                     <h5 class="name">
-                                                                        <a href="#">john doe</a>
+                                                                        <a href="#"><?=Users::get()->username ?? ''?></a>
                                                                     </h5>
-                                                                    <span class="email">johndoe@example.com</span>
+                                                                    <span class="email"><?=Users::get()->email ?? ''?></span>
                                                                 </div>
                                                             </div>
                                                             <div class="account-dropdown__body">
@@ -208,7 +208,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="account-dropdown__footer">
-                                                                <a href="#">
+                                                                <a href="<?=BASE_URL?>../?controller=user&action=logout">
                                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                                             </div>
                                                         </div>

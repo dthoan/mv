@@ -138,7 +138,7 @@ class Models{
         return $this->_exec($sql);
     }
 
-    public function update($aryUpdate, $coditions){
+    public function update($aryUpdate, $coditions = []){
         $sql = "UPDATE " . $this->table . " SET ";
 
         //query SET 
@@ -150,7 +150,13 @@ class Models{
         $sql = trim($sql, ',');
         
         //set query WHERE
-        $sql .= ' WHERE ' .  $this->buildWhere($coditions);
+        if(!empty($coditions)){
+            $sql .= ' WHERE ' .  $this->buildWhere($coditions);
+        }elseif(!empty($this->coditions)){
+            $sql .= ' WHERE ' .  $this->buildWhere($this->coditions);
+        }else{
+            return false;
+        }
 
         return $this->_exec($sql);
     }

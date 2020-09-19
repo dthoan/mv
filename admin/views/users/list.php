@@ -25,7 +25,7 @@
         <table class="table table_user_view disable_a_disabled">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col"></th>
                     <th scope="col">Username</th>
                     <th scope="col">Fullname</th>
                     <th scope="col" class="text-center">Email</th>
@@ -37,7 +37,13 @@
             <tbody>
                 <?php foreach(($users ?? []) as $user) : ?>
                     <tr>
-                        <th scope="row"><?=$user['id']?></th>
+                        <th scope="row">
+                            <?php if(Users::can('edit_permission_user')) : ?>
+                                <a href="<?=BASE_URL?>?controller=permissions&action=permissionUser&id=<?=$user['id']?>">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            <?php endif; ?>
+                        </th>
                         <td>
                             <?=$user['username']?>
                             <?php if($user['flag_deactive']) : ?>
