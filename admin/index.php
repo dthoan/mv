@@ -10,9 +10,10 @@ $hostUrl    = $cheme . '://' . $_SERVER['HTTP_HOST'];
 $scriptName = $_SERVER['SCRIPT_NAME'];
 $baseUrl    = $hostUrl . $scriptName;
 $baseUrl    = rtrim($baseUrl, 'index.php');
-
 if(count(explode('localhost', $hostUrl)) > 1){
     $scriptName = explode('/', $scriptName)[1];
+}else{
+    $scriptName = '';
 }
 
 define("BASE_URL", $baseUrl);
