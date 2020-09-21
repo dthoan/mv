@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 19, 2020 lúc 08:13 PM
+-- Thời gian đã tạo: Th9 21, 2020 lúc 10:26 AM
 -- Phiên bản máy phục vụ: 10.4.13-MariaDB
 -- Phiên bản PHP: 7.2.31
 
@@ -44,7 +44,11 @@ INSERT INTO `loaihang` (`id`, `category_code`, `category_name`, `created_at`) VA
 (20, 'TTCPL_003', 'Trà Trái Cây', '2020-09-18 06:20:14'),
 (21, 'DXPL_004', 'Đá Xay', '2020-09-18 06:20:56'),
 (22, 'NEPL_005', 'Nước Ép ', '2020-09-18 06:22:00'),
-(23, '0001', 'Khác', '2020-09-18 06:25:34');
+(23, '0001', 'Khác', '2020-09-18 06:25:34'),
+(24, 'TT_007', 'Trà', '2020-09-20 03:34:28'),
+(25, 'CF_008', 'Cà Phê', '2020-09-20 03:34:46'),
+(26, 'DAM_009', 'Đồ Ăn Mặn', '2020-09-20 03:35:27'),
+(27, 'TM_010', 'Tráng Miệng', '2020-09-20 03:35:47');
 
 -- --------------------------------------------------------
 
@@ -141,7 +145,9 @@ INSERT INTO `product` (`id`, `name`, `price`, `discount`, `description`, `images
 (26, 'Trà Nhãn - Sen', '64000', 0, 'Longan Tea - Lotus', 'public/uploads/5365f25bb01270679f223210a077919d_20200918085544.png', 20),
 (27, 'Trà Thảo Mộc', '50000', 0, 'Lucky Tea', 'public/uploads/fa882f7720922d2edb078120add55a70_20200918093202.png', 19),
 (28, 'Hồng Trà Sữa', '50000', 0, 'Black Milk Tea', 'public/uploads/fb78f5489bae09e3d7feed2787a7b9d0_20200918093238.png', 18),
-(29, 'Trà Cocktail Phúc Long', '65000', 0, 'Phuc Long Cocktail Tea', 'public/uploads/6478267b3b5922c6ee6b750410dc7694_20200918093319.png', 21);
+(29, 'Trà Cocktail Phúc Long', '65000', 0, 'Phuc Long Cocktail Tea', 'public/uploads/6478267b3b5922c6ee6b750410dc7694_20200918093319.png', 21),
+(31, 'Trà Xanh Đá Xay', '55000', 0, 'Green Tea Ice Blended', 'public/uploads/e809f15f4f74616cc3656d0da45ef05c_20200920053715.png', 21),
+(32, 'Trà Đào Đá Xay', '60000', 0, 'Peach Tea', 'public/uploads/ca5395e70a359e46bd49fa2b789b4e92_20200920053802.png', 21);
 
 -- --------------------------------------------------------
 
@@ -182,7 +188,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `fullname`, `phone`, `remember_code`, `token_code`, `permisions`, `birthday`, `created_at`, `updated_at`, `flag_deactive`) VALUES
 (1, 'saoxa37', 'e147605d9bac7e35a1239f244ad98467fff1c845', 'saoxa37@gmail.com', 'Đậu Minh Việt', '0329012526', '', '', '', '05/07/1998', '2020-09-18 16:00:13', '2020-09-19 08:43:03', 0),
-(2, 'admin', 'a6bb5f6eaed2bcb24c8cd64c76bde9918cca60c9', 'doanthihoan0961556327@gmail.com', 'Đoàn Thị Hoàn', '0329012526', '', '', '1|2|3|10|14|17', '10/02/1999', '2020-09-19 05:39:12', '2020-09-19 18:10:54', 0),
+(2, 'admin', 'a6bb5f6eaed2bcb24c8cd64c76bde9918cca60c9', 'doanthihoan0961556327@gmail.com', 'Đoàn Thị Hoàn', '0329012526', '', '', '1|2|3|4|5|18|7|8|9|10|11|12|13|6|14|15|16|17', '10/02/1999', '2020-09-19 05:39:12', '2020-09-20 03:33:42', 0),
 (3, 'user1', 'ce81085865cfea69c6ebd9d0fe69ab03f7eff010', 'user@demo.local', 'Demo User', '0879848104', '', '', '', '14/01/1998', '2020-09-19 08:59:39', '2020-09-19 09:03:50', 1);
 
 --
@@ -237,7 +243,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `loaihang`
 --
 ALTER TABLE `loaihang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT cho bảng `news`
@@ -255,7 +261,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT cho bảng `topic`
