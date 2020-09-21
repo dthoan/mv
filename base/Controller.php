@@ -74,18 +74,10 @@ class Controller {
         $pathUpload             = 'public/uploads/';
         $dateUpload             = date('YmdHis');
         $nameFileUpload         = md5($nameFile . $dateUpload) . '_' . $dateUpload . '.' . $imageFileType;
-        //NameFileUpload phải được đảm bảo là chưa từng tồn tại trong thư mục uploads
-        //Vậy nên sẽ sử dụng md5 (encrypt) cái tên của file. thêm vào đó là cộng thêm ngày giờ upload nữa
-        //đảm bảo không trùng nổi hiểu rồi hihi
-        //Hàm in_array là 1 hàm mặc định của php.
-        //mục đích để kiểm tra 1 phần tử có tồn tại trong 1 mảng hay không 
-        //Ví dụ mảng extension. nó có 5 giá trị. Chỉ cần cái imageFileType là 1 trong 5 giá trị đấy thì pass
 
         if(!in_array($imageFileType, $imageExtensionAllow)){
             die("Type file not support!");
         }
-        // e về đã nha hết tiết rồi 
-        //ok
         if($sizeFile > $fileUploadConfig['maxSize']){
             die('Size File to big!');
         }
