@@ -93,6 +93,7 @@ class Controller {
         //upload
         $pathFileSave = $pathUpload . $nameFileUpload;
         $pathMoveFile = PATH_UPLOAD . '/' . $pathFileSave;
+
         if (move_uploaded_file($files["tmp_name"], $pathMoveFile)) {
             return $pathFileSave;
         } else {
