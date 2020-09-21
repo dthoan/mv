@@ -1,6 +1,6 @@
 <?php
 
-$baseUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
+$baseUrl = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
 $baseUrl = rtrim($baseUrl, 'index.php');
 define("BASE_URL", $baseUrl);
 define("BASE_PATH", __DIR__);
