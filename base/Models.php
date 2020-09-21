@@ -134,7 +134,6 @@ class Models{
         $aryKeys = array_keys($aryInsert);
         $aryValues = array_values($aryInsert);
         $sql = 'INSERT INTO ' . $this->table . ' (' . implode(', ', $aryKeys) . ') VALUES ("' . implode('", "', $aryValues) . '")';
-        //kết quả thu được là: INSERT INTO product (name, price, description) VALUES ("dsads", "fsadsaf", "fsadasfas")
         return $this->_exec($sql);
     }
 

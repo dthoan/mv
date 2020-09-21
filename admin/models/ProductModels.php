@@ -8,7 +8,7 @@ class ProductModels extends Models{
         parent::__construct();
         $this->categoryTable = new LoaihangModels();
     }
-    // khóa ngoại??
+
     public function productAll(){
         $products = $this->all();
         return array_map(function(&$product){

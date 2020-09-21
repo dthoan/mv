@@ -27,9 +27,7 @@ class ProductController extends Controller{
 
         $allCategory = $this->category->all();
         $params = [
-            // cái này ở đâu ra v
-            //nó sẽ là tên biến cho view. với giá trị là allCategory,
-            // mình tự đặt cho nó hả. ừ. ok
+
             'categories' => $allCategory
         ];
         return $this->view('product/add_update.php', $params);
