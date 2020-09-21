@@ -1,6 +1,12 @@
 <?php
 
-$hostUrl    = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'];
+if(count(explode('localhost', $_SERVER['HTTP_HOST'])) > 1){
+    $cheme = $_SERVER['REQUEST_SCHEME'];
+}else{
+    $cheme = 'https';
+}
+
+$hostUrl    = $cheme . '://' . $_SERVER['HTTP_HOST'];
 $scriptName = $_SERVER['SCRIPT_NAME'];
 $baseUrl    = $hostUrl . $scriptName;
 $baseUrl    = rtrim($baseUrl, 'index.php');

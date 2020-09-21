@@ -6,7 +6,8 @@ return [
         'jpg',
         'jpeg',
         'gif',
-        'doc'
+        'doc',
+        'webp'
     ],
     'maxSize' => 4000000
 ];
