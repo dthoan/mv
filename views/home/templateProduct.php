@@ -5,7 +5,11 @@
         <div class="product-grid-content">
             <div class="product-header">
                 <a href="" class="author"><?=$product['category']?></a>
-                <h3><a href="<?=BASE_URL?>?controller=home&action=detail&id=<?=$product['id'] ?? ''?>"><?=$product['name']?></a></h3>
+                <h3>
+                    <a href="<?=BASE_URL?>?controller=home&action=detail&id=<?=$product['id'] ?? ''?>">
+                        <?=$product['name']?>
+                    </a>
+                </h3>
             </div>
             <div class="product-card--body">
                 <div class="card-image">

@@ -109,7 +109,7 @@ class Models{
             'page_end' => $pageEnd,
         ];
     }
-
+    // câu lệnh build điều kiện get data theo codition truyền vào
     public function buildWhere($coditions){
         $where = [];
         foreach($coditions as $key => $codition){
@@ -121,7 +121,7 @@ class Models{
         }
         return implode(' AND ', $where);
     }
-
+// sort data trong sql
     public function buildOrder($orders){
         $orderData = [];
         foreach($orders as $key => $order){
@@ -141,7 +141,7 @@ class Models{
     public function update($aryUpdate, $coditions = []){
         $sql = "UPDATE " . $this->table . " SET ";
 
-        //query SET 
+        //query SET
         foreach($aryUpdate as $key => $val){
             $sql .= ' ' . $key . ' = "' . $this->escapeSql($val) . '",';
         }

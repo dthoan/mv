@@ -26,7 +26,7 @@ class Controller {
         $header = $this->render('layouts/header.php', $paramsHeader);
 
         //sau đó set content body vào params để thực hiện render layout
-        //Bởi vì bên layout mình đang echo $contents, nên phải bắt buộc key = contents
+        // layout $contents, nên phải bắt buộc key = contents
         $paramsLayout = array_merge($params, [
             'contents' => $contents,
             'footer' => $footer,
