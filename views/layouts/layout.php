@@ -764,11 +764,15 @@ Footer Area
         </div>
     </div>
 </footer>
+<script>
+    const ROOT_URL = '<?=BASE_URL?>';
+</script>
 <!-- Use Minified Plugins Version For Fast Page Load -->
 <script src="public/js\plugins.js"></script>
 <script src="public/js\function.js"></script>
 <script src="public/js\ajax-mail.js"></script>
 <script src="public/js\custom.js"></script>
+<script src="public/js/Apps.js"></script>
 </body>
 
 </html>

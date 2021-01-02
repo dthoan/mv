@@ -40,3 +40,7 @@ function _dump($data){
 function session(){
     return new Session();
 }
+
+function response(){
+    return new Request();
+}

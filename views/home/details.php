@@ -38,12 +38,20 @@
                     </article>
                     <div class="add-to-cart-row">
                         <div class="count-input-block">
-                            <span class="widget-label">Qty</span>
-                            <input type="number" class="form-control text-center" value="1">
+                            <label for="quantity" class="widget-label">Qty</label>
+                            <input type="number" id="quantity" class="form-control text-center" value="1">
                         </div>
                         <div class="add-cart-btn">
-                            <a href="" class="btn btn-outlined--primary"><span class="plus-icon">+</span>Add to
-                                Cart</a>
+                            <button
+                                class="btn btn-outlined--primary"
+                                onclick="Apps.addToCart(this)"
+                                data-id="<?= $product['id'] ?>"
+                                data-name="<?= $product['name'] ?>"
+                                data-end-tag="true">
+                                <!-- ^^ -->
+                                <span class="plus-icon">+</span>
+                                <span>Add to Cart</span>
+                            </button>
                         </div>
                     </div>
                     <div class="compare-wishlist-row">

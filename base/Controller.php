@@ -4,8 +4,15 @@
 class Controller {
 
     protected $layout = 'layouts/layout.php';
+    protected $_request = null;
 
     public function __construct(){
+        $this->_request = new Request();
+        $this->init();
+    }
+
+    protected function init(){
+        //
     }
 
     public function view($path, array $params = [], $returnHtml = false){

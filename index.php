@@ -1,10 +1,12 @@
 <?php
 
-if(count(explode('localhost', $_SERVER['HTTP_HOST'])) > 1){
-    $cheme = $_SERVER['REQUEST_SCHEME'];
-}else{
-    $cheme = 'https';
-}
+//if(count(explode('localhost', $_SERVER['HTTP_HOST'])) > 1){
+//    $cheme = $_SERVER['REQUEST_SCHEME'];
+//}else{
+//    $cheme = 'https';
+//}
+
+$cheme = $_SERVER['REQUEST_SCHEME'];
 
 $baseUrl = $cheme . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
 $baseUrl = rtrim($baseUrl, 'index.php');
